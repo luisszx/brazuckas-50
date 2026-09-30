@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brazuckas 50 Images</title>
+</head>
+<body>
+    <h1>Brazuckas 50 Product Images</h1>
+    <p>Image repository for Shopify import</p>
+    <ul id="images"></ul>
+    <script>
+        fetch('https://api.github.com/repos/luisszx/brazuckas-50/contents/')
+            .then(r => r.json())
+            .then(files => {
+                files.filter(f => f.name.endsWith('.png')).forEach(f => {
+                    document.getElementById('images').innerHTML +=
+                        '<li><a href="' + f.name + '">' + f.name + '</a></li>';
+                });
+            });
+    </script>
+</body>
+</html>
